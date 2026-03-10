@@ -4,17 +4,21 @@ import Footer from "./components/Footer.tsx";
 import {useState} from "react";
 import {navItems} from "./utils/constants.ts";
 import {SWContext} from "./utils/context.ts";
+import type { HeroInfo } from "./utils/context";
 
 function App() {
     const [page, setPage] = useState(navItems[0]);
+    const [heroContext, setHeroContext] = useState<HeroInfo | null>(null);
 
     return (
-        <div className={'mx-2'}>
-            <SWContext value={{page, changePage: setPage}}>
+        <div className={'mx-2 min-h-screen flex flex-col'}>
+            <SWContext.Provider value={{page, changePage: setPage, heroContext, setHeroContext}}>
                 <Header/>
-                <Main/>
+                <main className="flex-1">
+                    <Main/>
+                </main>
                 <Footer/>
-            </SWContext>
+            </SWContext.Provider>
         </div>
     )
 }

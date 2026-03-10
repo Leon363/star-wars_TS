@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {base_url, period_month} from "../utils/constants.ts";
+import Button from "./ui/Button.tsx";
 
 const Contact = () => {
     const [planets, setPlanets] = useState<string[]>(() => {
@@ -54,10 +55,10 @@ const Contact = () => {
                     className={`text-black border h-52 w-full p-3 border-[#ccc] rounded-sm mt-1.5 mb-4 resize-y`}
                     name="subject" placeholder="Write something..."/>
             </label>
-            <button
-                className={`bg-[#4CAF50] text-white py-3 px-5 border-none rounded-sm cursor-pointer hover:bg-[#45a049]`}
-                type="submit">Submit
-            </button>
+            <Button
+                className={`bg-danger border px-3 rounded-md cursor-pointer hover:bg-red-500 hover:text-white text-center`}
+                >Submit
+            </Button>
         </form>
     )
 }
