@@ -1,0 +1,24 @@
+
+
+export interface SWContextValue {
+    hero: string;
+    changeHero: (hero: string) => void;
+}
+
+export interface Hero {
+    name: string;
+    img: string;
+    url: string;
+}
+
+export interface Props{
+    friend: string;
+    pos: number;
+    itemTitle: string
+
+}
+
+
+
+// export interface Characters {[key: string]: Hero}
+// export type Characters = Record<string, Hero>;
