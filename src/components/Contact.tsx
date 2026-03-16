@@ -1,19 +1,22 @@
-import {useContext, useEffect, useState} from "react";
-import {base_url, characters, defaultHero, period_month} from "../utils/constants.ts";
-import {SWContext} from "../utils/context.ts";
-import {useParams} from "react-router";
+import {useEffect, useState} from "react";
+import {base_url, characters, period_month} from "../utils/constants.ts";
+// import {SWContext} from "../utils/context.ts";
+// import {useParams} from "react-router";
 import ErrorPage from "./ErrorPage.tsx";
+import {useHero} from "../hooks/useHero.ts";
 
 const Contact = () => {
 
-    const {changeHero} = useContext(SWContext);
-    const {heroId = defaultHero} = useParams();
-    useEffect(() => {
-        if (!(heroId in characters)) {
-            return;
-        }
-        changeHero(heroId);
-    }, [])
+    // const {changeHero} = useContext(SWContext);
+    // const {heroId = defaultHero} = useParams();
+    // useEffect(() => {
+    //     if (!(heroId in characters)) {
+    //         return;
+    //     }
+    //     changeHero(heroId);
+    // }, [heroId])
+
+    const heroId = useHero();
 
     const [planets, setPlanets] = useState<string[]>(() => {
         const planets = JSON.parse(localStorage.getItem('planets')!);
