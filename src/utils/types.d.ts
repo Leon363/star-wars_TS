@@ -1,8 +1,7 @@
-
-
 export interface SWContextValue {
-    hero: string;
-    changeHero: (hero: string) => void;
+    hero: string | null;
+    lastValidHero: string | null;
+    changeHero: (hero: string | null) => void;
 }
 
 export interface Hero {
@@ -11,14 +10,8 @@ export interface Hero {
     url: string;
 }
 
-export interface Props{
+export interface Props {
     friend: string;
     pos: number;
-    itemTitle: string
-
+    itemTitle: string;
 }
-
-
-
-// export interface Characters {[key: string]: Hero}
-// export type Characters = Record<string, Hero>;

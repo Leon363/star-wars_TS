@@ -1,22 +1,11 @@
 import {useEffect, useState} from "react";
 import {base_url, characters, period_month} from "../utils/constants.ts";
-// import {SWContext} from "../utils/context.ts";
-// import {useParams} from "react-router";
 import ErrorPage from "./ErrorPage.tsx";
-import {useHero} from "../hooks/useHero.ts";
+import {useValidHero} from "../hooks/customHooks.ts";
 
 const Contact = () => {
 
-    // const {changeHero} = useContext(SWContext);
-    // const {heroId = defaultHero} = useParams();
-    // useEffect(() => {
-    //     if (!(heroId in characters)) {
-    //         return;
-    //     }
-    //     changeHero(heroId);
-    // }, [heroId])
-
-    const heroId = useHero();
+    const {heroId} = useValidHero();
 
     const [planets, setPlanets] = useState<string[]>(() => {
         const planets = JSON.parse(localStorage.getItem('planets')!);
@@ -42,7 +31,7 @@ const Contact = () => {
         if (planets.length === 1){
             getPlanets().then(() => console.log('Planets were loaded'));
         }
-    }, [])
+    }, [planets.length])
 
     return (heroId in characters) ? (
         <form className={`w-4/5 my-0 mx-auto rounded-[5px] bg-[#f2f2f2] p-5`} onSubmit={(e) => {

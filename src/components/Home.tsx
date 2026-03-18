@@ -1,27 +1,17 @@
 import OpeningCrawl from "./OpeningCrawl.tsx";
 import Hero from "./Hero.tsx";
 import DreamTeam from "./DreamTeam.tsx";
-// import {useParams} from "react-router";
-import {characters, navItems} from "../utils/constants.ts";
-// import {useContext, useEffect} from "react";
-// import {SWContext} from "../utils/context.ts";
+import { navItems} from "../utils/constants.ts";
 import ErrorPage from "./ErrorPage.tsx";
-import {useHero} from "../hooks/useHero.ts";
+// import {useValidHero} from "../hooks/customHooks.ts";
+import {useContext} from "react";
+import {SWContext} from "../utils/context.ts";
 
 const Home = () => {
-    // const {changeHero} = useContext(SWContext);
-    // const {heroId = defaultHero} = useParams();
-    //
-    // useEffect(() => {
-    //     if (!(heroId in characters)) {
-    //         return;
-    //     }
-    //     changeHero(heroId);
-    // }, [heroId])
 
-    const heroId = useHero();
+    const {hero} = useContext(SWContext);
 
-    return  (heroId in characters) ? (
+    return  hero ? (
         <main>
             <Hero />
             <DreamTeam itemTitle={navItems[0]}/>

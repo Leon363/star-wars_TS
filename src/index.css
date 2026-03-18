@@ -1,17 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 @import "tailwindcss";
 
+
 @theme {
     --font-poller: 'Poller One', sans-serif;
     --background-image-sky: url("./assets/sky.jpg");
-    --color-main: #eedb00;
+    --color-main: #eedb00; /* жёлтый */
     --color-gray: rgba(60, 69, 67, 0.6);
-    --color-danger: rgba(204, 3, 35, 0.5);
+    --color-danger: rgba(204, 3, 35, 0.5); /* бордовый */
     --shadow-hero: 0.6rem 0.6rem 0.6rem gray;
 }
 
+
 @layer base {
     body {
-        @apply font-poller bg-fixed bg-sky text-main;
+        font-family: var(--font-poller), sans-serif;
+        background-image: var(--background-image-sky);
+        background-size: cover;
+        background-attachment: fixed;
+        color: var(--color-main);
     }
 }
+
+
+.button-sw {
+    background: var(--color-danger);
+    color: var(--color-main);
+    border: 1px solid var(--color-main);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.button-sw:hover {
+    background: #a62828;
+    color: white;
+}
+
+
+@keyframes crawl {
+    0% {
+        transform: rotateX(25deg) translateY(100%);
+    }
+    100% {
+        transform: rotateX(25deg) translateY(-200%);
+    }
+}
+
+@utility animate-crawl {
+    animation: crawl 40s linear infinite;
+}
+
+/*!* Наклон *!*/
+/*.rotate-x-25 {*/
+/*    transform: rotateX(25deg);*/
+/*}*/
