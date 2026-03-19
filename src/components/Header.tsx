@@ -8,7 +8,7 @@ const Header = () => {
     const {hero} = useContext(SWContext);
 
 
-    const headerSign = characters[hero] && characters[hero].name ? characters[hero].name : 'Something went wrong';
+    const headerSign = hero && characters[hero].name ? characters[hero].name : 'Something went wrong';
 
     return (
         <header className="rounded-t-3xl bg-gray relative z-10">
